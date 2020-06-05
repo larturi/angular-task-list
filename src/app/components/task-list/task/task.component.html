@@ -1,0 +1,16 @@
+<div class="row no-gutters mb-2">
+  <div class="col-3 block-date rounded-left p-2">
+    {{ task.date | date:'dd MMM yyyy'}}
+  </div>
+
+  <div class="block-description p-2"
+      [ngClass]="{'col-7': !task.completed, 'col-9 block-description-completed rounded-right del': task.completed}"
+       [title]="task.description">
+    {{ task.description }}
+  </div>
+
+  <div *ngIf="!task.completed" class="col-2 block-action rounded-right text-right p-1">
+    <i class="fa fa-check text-success icon-action" (click)="taskCheckedEvent()"></i>
+    <i class="fa fa-remove text-danger icon-action" (click)="taskRemoveEvent()"></i>
+  </div>
+</div>
